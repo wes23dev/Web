@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Login</h1>
+    <form id="loginForm" action="../processar/login.php" method="POST" onsubmit="return validarFormulario()">
+      <label for="nickname">Usuário:</label>
+      <input type="text" id="nickname" name="nickname" placeholder="Nome do Usuário" required>
+      
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+      
+      <button type="submit">Entrar</button>
+    </form>
+    
+    <p id="errorMessage" class="error-message" style="color: red; display: none;"></p>
+    <p id="successMessage" class="success-message" style="color: green; display: none;"></p>
+
+    <button type="button" style="margin-top: 10px;" onclick="window.location.href='../Registro/registro.php'">
+      Ir para o Registro
+    </button>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      let nickname = document.getElementById("nickname").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let errorMessage = document.getElementById("errorMessage");
+
+      if (nickname === "" || password === "") {
+        errorMessage.textContent = "Preencha todos os campos!";
+        errorMessage.style.display = "block";
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
